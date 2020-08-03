@@ -24,6 +24,7 @@ Once the software is running, the instructions (Figure 1) and the command menu (
 |_l_|Maximize y-axis	  | |_7_||
 |_q_|Quit graph and finish| |_8_||
 ||| |_9_||
+
 In addition, basic information of the read file is printed.
 - Some information of 'x', 'y' and 'z' above $ z_ {ref} $
 - File size (rows and columns)
