@@ -5,13 +5,12 @@ For use the Software, use an integrated development environment (IDE) of Python 
 > ProcessingAlgorithms/ParametrosMorfologicos.py
 
 The **path** of .cvs where file is located, the **file_name** and the $\bf z_{ref}$ must be write by user. When the information is correct, the Python file can be run.
-### Menu of software
-
-Once the software is running, the instructions (Figure 1) and the command menu (Table 1) are printed in the command window, which will serve as a guide for the user on how to use the software.
 
 ![Figure 1](/Images/Instructions.PNG)
 
 ##### _Figure 1. Instructions for use the software._
+### Menu of software
+Once the software is running, the instructions (Figure 1) and the command menu (Table 1) are printed in the command window, which will serve as a guide for the user on how to use the software.
 ##### _Table 1. Special key to use the software._
 |Character|Function		  | |Number|Parameter estimation|
 |-------|-----------------|-|---|---------------|
@@ -24,7 +23,7 @@ Once the software is running, the instructions (Figure 1) and the command menu (
 |_k_|Maximize x-axis	  | |_6_||
 |_l_|Maximize y-axis	  | |_7_||
 |_q_|Quit graph and finish| |_8_||
-||						  | |_9_||
+||| |_9_||
 In addition, basic information of the read file is printed.
 - Some information of 'x', 'y' and 'z' above $ z_ {ref} $
 - File size (rows and columns)
