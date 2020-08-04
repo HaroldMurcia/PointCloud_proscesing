@@ -6,7 +6,7 @@ For use the Software, use an integrated development environment (IDE) of Python 
 
 The **path** of .cvs where file is located, the **file_name** and the $\bf z_{ref}$ must be write by user. When the information is correct, the Python file can be run.
 
-![Figure 1](/Images/Instructions.PNG)
+![Figure 1](/Images/Instructions.png)
 
 ##### _Figure 1. Instructions for use the software._
 ### Menu of software
@@ -23,7 +23,7 @@ Once the software is running, the instructions (Figure 1) and the command menu (
 |_k_|Maximize x-axis	  | |_6_||
 |_l_|Maximize y-axis	  | |_7_||
 |_q_|Quit graph and finish| |_8_||
-||| |_9_||
+||						  | |_9_||
 
 In addition, basic information of the read file is printed.
 - Some information of 'x', 'y' and 'z' above $ z_ {ref} $
@@ -32,6 +32,15 @@ In addition, basic information of the read file is printed.
 
 Finally, an 'xy' view of the point cloud is graphed for the user to interact with the crop information how is show in Figure 2.
 
-![Figure 2](/Images/Example_1.PNG)
+![Figure 2](Images/Example_1.png)
 
 ##### _Figure 2. Example image of a crop._
+The method to estimate each parameter is explained below.
+### Step 0. Selection of each tree.
+The section of each tree is done manually. Using the mouse the user have to put the cursor on center of the tree that want mark. With left-click holding, move the cursor to outer point of tree. A red _x_ will be appear in center marked and yellow _x_ in the outer point , also will be printed a red circle around selected zone center on red _x_ how is shown in the Figure 3.
+
+![Figure 3](Images/Example_2.png)
+
+##### _Figure 3. Tree selection._
+Continue this procedure until you finish marking each tree in a current row. Press the _space_ key to tell the software that a new furrow will start and continue marking trees by repainting the procedure.
+### Step 1. Tree high estimation.
