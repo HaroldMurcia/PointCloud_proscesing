@@ -6,7 +6,7 @@ For use the Software, use an integrated development environment (IDE) of Python 
 
 The **path** of .cvs where file is located, the **file_name** and the $\bf z_{ref}$ must be write by user. When the information is correct, the Python file can be run.
 
-![Figure 1](/Images/Instructions.png)
+![Figure 1](/Images/Instructions.PNG)
 
 ##### _Figure 1. Instructions for use the software._
 ### Menu of software
