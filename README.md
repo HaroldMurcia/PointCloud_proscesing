@@ -47,4 +47,5 @@ Continue this procedure until you finish marking each tree in a current row. Pre
 Depending the parameter to stimate, select the option according to the menu. 
 #### Tree high
 The Tree high is measured as the distance between the highest piont in the tree selected section and a global reference fixed by user at begin of the proces.
-$ h_T = max{z} - z_{ref} $.
+
+$$ h_T = max{z} - z_{ref} $$
