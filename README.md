@@ -26,7 +26,7 @@ Once the software is running, the instructions (Figure 1) and the command menu (
 ||						  | |_9_||
 
 In addition, basic information of the read file is printed.
-- Some information of 'x', 'y' and 'z' above $ z_ {ref} $
+- Some information of 'x', 'y' and 'z' above $ z_{ref} $
 - File size (rows and columns)
 - Time used to read the file.
 
@@ -43,4 +43,8 @@ The section of each tree is done manually. Using the mouse the user have to put 
 
 ##### _Figure 3. Tree selection._
 Continue this procedure until you finish marking each tree in a current row. Press the _space_ key to tell the software that a new furrow will start and continue marking trees by repainting the procedure.
-### Step 1. Tree high estimation.
+### Step 1. Parameter estimation
+Depending the parameter to stimate, select the option according to the menu. 
+#### Tree high
+The Tree high is measured as the distance between the highest piont in the tree selected section and a global reference fixed by user at begin of the proces.
+$ h_T = max{z} - z_{ref} $.
