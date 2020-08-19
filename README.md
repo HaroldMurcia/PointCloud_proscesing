@@ -49,3 +49,15 @@ Depending the parameter to stimate, select the option according to the menu.
 The Tree high is measured as the distance between the highest piont in the tree selected section and a global reference fixed by user at begin of the proces.
 
 $$ h_T = max{z} - z_{ref} $$
+
+#### Distance between trees
+The Distance between trees in same row, is measured as the distance between the pionts selected as center of tree regions.
+
+$$ D_T = C_{k} - C_{k+1} $$
+
+#### Distance between grooves
+The Distance between rows is measured as the distance between the lines proyected pionts selected as center of tree regions.
+
+$$ D_g = C_{k} - C_{k+1} $$
+
+#### Distance between grooves
