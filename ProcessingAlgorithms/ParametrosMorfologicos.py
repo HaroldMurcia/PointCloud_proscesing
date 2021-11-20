@@ -10,13 +10,17 @@ import numpy as np
 import time
 import pandas as pd
 from scipy.spatial import distance_matrix
-import os
+import os, sys, warnings
 
 
 class hCannopy(object): # Crea clase
-    
-    def __init__(self):
+
+    def __init__(self,filename):
         tic = time.time()
+        self.filename=filename
+        print('Universidad de Ibagué - D+TEC - www.haroldmurcia.com\n'+
+        '3D CROP - alphaVersion [Linux powered]\n')
+        print('Input file = '+self.filename+'\n')
         print('=============================================================\n'+
               '|                        Instructions                       |\n'+
               '-------------------------------------------------------------\n'+
@@ -64,25 +68,11 @@ class hCannopy(object): # Crea clase
               '|  "9" : 3D view of a tree                                  |\n'+
               '-------------------------------------------------------------\n')
         # Design Params
-        self.z_ref = 1.1*0 + 387.5
-        path = 'G:/Alpha/Data/Scan/'
-        filename = 'reco_move_output.txt'
-        filename = 'nube_lite.txt'
-        filename = 'citricos_02_group1- Cloud.txt'
+        self.z_ref = 387.25  # Tunning parameter [Represents the ground level] 387.28 for LiDAR file
         print('txt file is been reading...')
-        try:
-            df = pd.read_csv(path+filename, sep="\t", header = 0, usecols=['X', 'Y', 'Z'])
-        except:
-            try:
-                df = pd.read_csv(path+filename, sep=" ", header = 0, usecols=['X', 'Y', 'Z'])
-            except:
-                df = pd.read_csv(path+filename, sep=" ", header = None)
-                df = df.rename(columns={0: "X", 1: "Y", 2: "Z"})
+        df = pd.read_csv(self.filename, sep=",", header = 0)
+        df.columns = ["X","Y","Z","i"]
         self.data = df.drop(df[df['Z']<=self.z_ref].index)
-        # self.data = self.data.drop(self.data[self.data['X']<=18.7].index)
-        # self.data = self.data.drop(self.data[self.data['X']>=62.2].index)
-        # self.data = self.data.drop(self.data[self.data['Y']<=8.5].index)
-        # self.data = self.data.drop(self.data[self.data['Y']>=24.4].index)
         print(self.data)
         L = len(self.data)
         print('txt file has been read... file has '+str(L)+' lines')
@@ -97,7 +87,7 @@ class hCannopy(object): # Crea clase
                         color='green',
                         linewidth=1.0)
         # Flags
-        
+
         # Groove params
         self.contG = 0
         self.contT = 0
@@ -118,14 +108,14 @@ class hCannopy(object): # Crea clase
         print('\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
         print('Begin the interactive platform...')
         self.main()
-    
+
 
     def onclick(self,event):
         self.click_x = event.xdata
         self.click_y = event.ydata
         self.p, = plt.plot(self.click_x,self.click_y,'xr')
         self.fig.canvas.mpl_connect('button_release_event',self.offclick)
-    
+
     def offclick(self,event):
         x2 = event.xdata
         y2 = event.ydata
@@ -136,13 +126,13 @@ class hCannopy(object): # Crea clase
                            'radio'+str(self.contG): radio[0]},
                           index=[self.contT])
         self.center = self.center.append(df)
-        
+
         Xc_k = radio[0][0]*self.Xc[0,] + self.click_x
         Yc_k = radio[0][0]*self.Yc[0,] + self.click_y
         self.p, = plt.plot(Xc_k,Yc_k,'r')
         # print(self.center.loc[self.contT])
         self.contT = self.contT + 1
-        
+
     def onKey(self,event):
         if (event.key==' '):
             self.contG = self.contG + 1
@@ -193,7 +183,7 @@ class hCannopy(object): # Crea clase
             exit()
         else:
             print('Unkown key')
-    
+
     def Diameter(self,df):
         tic = time.time()
         N = (self.contG)+1
@@ -264,7 +254,7 @@ class hCannopy(object): # Crea clase
                       '|  Processing time = '+str(time.time()-tic)+' seg')
                 self.p, = plt.plot(points.loc[indice,'X'],points.loc[indice,'Y'],'.c')
                 self.diameter.append(d.values[0])
-                
+
     def h_meassure(self,df):
         tic = time.time()
         N = (self.contG)+1
@@ -336,7 +326,7 @@ class hCannopy(object): # Crea clase
                 self.h.append(h)
                 k = k + 3
         # print(tree)
-    
+
     def D_tree(self,df):
         tic = time.time()
         N = (self.contG)+1
@@ -374,7 +364,7 @@ class hCannopy(object): # Crea clase
                       '|  Processing time = '+str(time.time()-tic)+' seg')
             else:
                 print('It is necessary to mark more than one tree for this option.')
-    
+
     def D_Grooves(self,df):
         tic = time.time()
         N = (self.contG)+1
@@ -440,14 +430,18 @@ class hCannopy(object): # Crea clase
         d_avg = np.average(distance)
         print('|  Average distance = '+str(d_avg)+' mts \n'+
               '|  Processing time = '+str(time.time()-tic)+' seg')
-                    
-    
+
+
     def main(self):
+        warnings.filterwarnings("ignore")
         self.fig.canvas.mpl_connect('button_press_event',self.onclick)
         self.fig.canvas.mpl_connect('key_press_event',self.onKey)
         self.ax.set_ylabel('y\n[mts]')
         self.ax.set_xlabel('x\n[mts]')
+        self.ax.figure.set_size_inches(15, 15)
+        self.ax.set_aspect('equal', 'box')
         plt.show()
-    
+
 if __name__ == '__main__':
-    cv = hCannopy()
+    filename = sys.argv[1]
+    cv = hCannopy(filename)
